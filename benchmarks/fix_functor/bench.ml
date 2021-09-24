@@ -4,7 +4,7 @@ let _  = Gc.set { gc with Gc.minor_heap_size = 3200000;
 
 let bench f =
   let t = Sys.time () in
-  ignore (f ()); Printf.printf "%f" (Sys.time () -. t)
+  ignore (f ()); Printf.printf "%f\n" (Sys.time () -. t)
 
 let rec sequence n acc =
   if (n >= 0) then 
