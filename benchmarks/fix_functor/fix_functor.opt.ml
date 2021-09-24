@@ -1,8 +1,7 @@
-let fix_limit = int_of_string @@ Sys.argv.(1)
-
 let t1 = Sys.time ();;
 
 open Fix_functor_gen
+let fix_limit = int_of_string @@ Sys.argv.(1)
 let fix = fix fix_limit arith
 
 module Fix = struct
@@ -19,5 +18,5 @@ module Fix = struct
   let observe = Runcode.run F.observe
 end
 
-let t2 = Sys.time ();;
-Printf.printf "%f," (t2 -. t1)
+(* time of code generation *)
+let _ = Printf.printf "%f\n" ((Sys.time ()) -. t1);;

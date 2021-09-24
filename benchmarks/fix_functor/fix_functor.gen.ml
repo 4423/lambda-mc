@@ -12,13 +12,13 @@ let arith   = (module struct type int_t = int type obs_t = int type unit_t = int
 )) in let sub   = (fun n1 -> (fun n2 -> (if (n1 = n2) then ((.~(X__4.int) 0), true) else ((.~(X__4.int) 0), true)))) in let mul   = (fun n1 -> (fun n2 -> match (n1, n2) with
 | ((n1, b1), (n2, b2)) -> (if (b1 || b2) then ((.~(X__4.int) 0), true) else ((.~(X__4.int) 0), true))
 )) in (fun n1 -> (fun n2 -> match (n1, n2) with
-| ((n1, _), (n2, _)) -> (((.~(X__4.div) n1) n2), false)
+| ((n1, b1), (n2, _)) -> (if b1 then ((.~(X__4.int) 0), true) else ((.~(X__4.int) 0), true))
 ))>. let observe   = .<let int   = (fun n1 -> (if (n1 = 0) then ((.~(X__4.int) 0), true) else ((.~(X__4.int) 0), true))) in let add   = (fun n1 -> (fun n2 -> match (n1, n2) with
 | ((n1, b1), (n2, b2)) -> (if (b1 && b2) then ((.~(X__4.int) 0), true) else ((.~(X__4.int) 0), true))
 )) in let sub   = (fun n1 -> (fun n2 -> (if (n1 = n2) then ((.~(X__4.int) 0), true) else ((.~(X__4.int) 0), true)))) in let mul   = (fun n1 -> (fun n2 -> match (n1, n2) with
 | ((n1, b1), (n2, b2)) -> (if (b1 || b2) then ((.~(X__4.int) 0), true) else ((.~(X__4.int) 0), true))
 )) in let div   = (fun n1 -> (fun n2 -> match (n1, n2) with
-| ((n1, _), (n2, _)) -> (((.~(X__4.div) n1) n2), false)
+| ((n1, b1), (n2, _)) -> (if b1 then ((.~(X__4.int) 0), true) else ((.~(X__4.int) 0), true))
 )) in (fun f -> match (f 0) with
 | (n, _) -> (.~(X__4.observe) (fun _ -> n))
 )>. end : X__3 with type obs_t = int));; let rec fix  depth m = (if (depth <= 0) then m else ((fix (depth - 1)) (suppressAddZeroOrMulZeroPE m)));;
