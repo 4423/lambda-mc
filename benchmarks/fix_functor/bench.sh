@@ -24,6 +24,8 @@ do
 
     for i in `seq 0 12`
     do
+        echo $n "-" $i
+
         # run bench
         echo $i | tr '\n' '\t' >> $RESULT_FILE
         /usr/bin/time -f '%M' ./bench.out $i 2>&1 | tr '\n' '\t' >> $RESULT_FILE
