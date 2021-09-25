@@ -30,7 +30,9 @@ do
         rm code.dump
         echo '' >> $RESULT_FILE
     done
-    
+
     # clean
     make clean
 done
+
+# python3 avg.py
