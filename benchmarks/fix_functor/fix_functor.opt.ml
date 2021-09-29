@@ -14,8 +14,8 @@ module Fix = struct
   let var = Runcode.run F.var
   let add = Runcode.run F.add
   let sub = Runcode.run F.sub
-  let mul = Runcode.run F.add
-  let div = Runcode.run F.sub
+  let mul = Runcode.run F.mul
+  let div = Runcode.run F.div
   let observe = Runcode.run F.observe
 end
 
