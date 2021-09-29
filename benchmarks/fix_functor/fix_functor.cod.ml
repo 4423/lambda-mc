@@ -39,10 +39,11 @@ let suppressAddZeroOrMulZeroPE = fun (m: (module S with type obs_t = int) code) 
                                 else if b2 then (n1, false)
                                 else (.~($m.add) n1 n2, false)
       let sub = fun n1 -> fun n2 ->
-        if n1 = n2 then (.~($m.int) 0, true) else .~($m.sub) n1 n2
+        match (n1, n2) with
+          (n1, _), (n2, _) -> if n1 = n2 then (.~($m.int) 0, true) else (.~($m.sub) n1 n2, false)
       let mul = fun n1 -> fun n2 ->
         match (n1, n2) with
-          (n1, b1), (n2, b2) -> if (b1 || b2) then (.~($m.int) 0, true) else .~($m.mul) n1 n2
+          (n1, b1), (n2, b2) -> if (b1 || b2) then (.~($m.int) 0, true) else (.~($m.mul) n1 n2, false)
       let div = fun n1 -> fun n2 ->
         match (n1, n2) with
           (n1, b1), (n2, _) -> if b1 then (.~($m.int) 0, true) else (.~($m.div) n1 n2, false)
